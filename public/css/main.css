@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+}
+
+div.questions {
+    width: 600px;
+    margin: auto;
+}
+
+div.questions > ul {
+    list-style: none;
+}
+
+div.questions > ul > li {
+    margin-bottom: 15px;
+}
+
+div.questions > ul > li > a{
+    display: block;
+    padding: 20px;
+    border: 1px solid lightgrey;
+}
+div.questions > ul > li > a:hover {
+    text-decoration: none;
+}
+

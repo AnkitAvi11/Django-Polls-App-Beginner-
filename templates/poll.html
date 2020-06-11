@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{%block title%}{{question}}{%endblock%}
+{%block content%}
+    <div class="container questions">
+        <ul>
+            <li><h4>{{question}}</h4></li>
+            <p>{{question.pub_date}}</p>
+            <p>Total options : {{question.choice_set.count}}</p>
+            <table class="table stripped table-hover">
+                <th>Options</th>
+                <th>Votes</th>
+                <th>Action</th>
+                {%for choice in question.choice_set.all%}
+                    <tr>
+                        <td>
+                            {{choice.choice_text}}
+                        </td>
+                        <td>
+                            {{choice.votes}}
+                        </td>
+                        <td>
+                            <form action="{%url 'vote' question.id choice.id%}" method="post">
+                                {%csrf_token%}
+                                <input type="Submit" class="btn btn-success" value="Vote">
+                            </form>
+                        </td>
+                    </tr>
+                {%endfor%}
+            </table>
+        </ul>
+    </div>
+{%endblock%}

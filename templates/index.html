@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%load humanize%}
+{%block title%}Home | Recent Polls{%endblock%}
+{%block content%}
+
+    <div class="container questions">
+
+        {%if latest_questions %}
+            <ul>
+                {%for question in latest_questions%}
+                <li>
+                    <a href="{%url 'poll' question.id%}">
+                    <h4 style="font-weight: normal;">{{question.question_text}}</h4>
+                    <p style="color: black;">{{question.pub_date}}</p>
+                    <p style="color: black;">{{question.pub_date | naturaltime}}</p>
+                    </a>
+                </li>
+                {%endfor%}
+            </ul>
+        {%else%}
+            <h3 style="text-align: center;color:grey">No Question has been posted yet</h3>
+        {%endif%}
+
+    </div>
+
+{%endblock%}
